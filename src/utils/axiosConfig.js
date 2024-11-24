@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const client = axios.create({
-  baseURL: process.env.REACT_APP_SERVER_URL + '/api',
+  baseURL: process.env.REACT_APP_API_URL + '/api',
 });
 
 client.defaults.headers.post['Content-Type'] = 'application/json';
