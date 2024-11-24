@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-gray-600 font-medium;
+  }
+
+  p {
+    @apply text-gray-700;
+  }
+
+  input {
+    @apply outline-none;
+  }
+}
+
+@layer utilities {
+  .active {
+    @apply bg-gray-800 text-white;
+  }
+
+  .outlet-height {
+    min-height: calc(100vh - theme(spacing.20));
+  }
+}
