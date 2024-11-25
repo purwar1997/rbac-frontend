@@ -1,22 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchRoles, fetchRoleById, addNewRole, editRole } from '../services/roleService';
+import { handleAsyncThunks } from '../../utils/helperFunctions';
 
-export const fetchRolesAsync = createAsyncThunk('role/fetchRoles', async () => await fetchRoles());
+export const fetchRolesAsync = createAsyncThunk('role/fetchRoles', handleAsyncThunks(fetchRoles));
 
 export const fetchRoleByIdAsync = createAsyncThunk(
   'role/fetchRoleById',
-  async id => await fetchRoleById(id)
+  handleAsyncThunks(fetchRoleById)
 );
 
-export const addNewRoleAsync = createAsyncThunk(
-  'role/addNewRole',
-  async roleDetails => await addNewRole(roleDetails)
-);
+export const addNewRoleAsync = createAsyncThunk('role/addNewRole', handleAsyncThunks(addNewRole));
 
-export const editRoleAsync = createAsyncThunk(
-  'role/editRole',
-  async ({ id, updates }) => await editRole(id, updates)
-);
+export const editRoleAsync = createAsyncThunk('role/editRole', handleAsyncThunks(editRole));
 
 const initialState = {
   status: 'idle',

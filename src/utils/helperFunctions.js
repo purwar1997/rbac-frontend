@@ -1,3 +1,5 @@
+import axios from './axiosConfig';
+
 export const classNames = (...classes) => classes.filter(Boolean).join(' ');
 
 export const delay = milliSeconds => {
@@ -13,3 +15,25 @@ export const handleClickOutside = (event, closeModal) => {
     closeModal();
   }
 };
+
+export const handleAsyncThunks =
+  apiService =>
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await apiService(data);
+      console.log(response);
+
+      return response.data?.data;
+    } catch (error) {
+      console.log(error);
+
+      if (axios.isAxiosError(error) && error.response) {
+        const errorData = {
+          status: error.response.status,
+          data: error.response.data,
+        };
+
+        return rejectWithValue(errorData);
+      }
+    }
+  };
