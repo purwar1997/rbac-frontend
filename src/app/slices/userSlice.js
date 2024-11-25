@@ -94,20 +94,20 @@ const userSlice = createSlice({
         state.users.splice(index, 1);
       })
       .addCase(activateUserAsync.fulfilled, (state, action) => {
-        const index = state.users.findIndex(user => user.id === action.payload.id);
-        state.users.splice(index, 1, action.payload);
+        const user = state.users.find(user => user.id === action.payload);
+        user.isActive = true;
       })
       .addCase(deactivateUserAsync.fulfilled, (state, action) => {
-        const index = state.users.findIndex(user => user.id === action.payload.id);
-        state.users.splice(index, 1, action.payload);
+        const user = state.users.find(user => user.id === action.payload);
+        user.isActive = false;
       })
       .addCase(archiveUserAsync.fulfilled, (state, action) => {
-        const index = state.users.findIndex(user => user.id === action.payload.id);
-        state.users.splice(index, 1, action.payload);
+        const user = state.users.find(user => user.id === action.payload);
+        user.isArchived = true;
       })
       .addCase(restoreUserAsync.fulfilled, (state, action) => {
-        const index = state.users.findIndex(user => user.id === action.payload.id);
-        state.users.splice(index, 1, action.payload);
+        const user = state.users.find(user => user.id === action.payload);
+        user.isArchived = false;
       });
   },
 });
