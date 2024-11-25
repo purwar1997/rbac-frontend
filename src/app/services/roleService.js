@@ -1,39 +1,39 @@
-import { sendAPIRequest } from '../../utils/axiosConfig';
+import axios from '../../utils/axiosConfig';
 
 export const fetchRoles = async () => {
   const config = {
-    method: 'get',
+    method: 'GET',
     url: '/roles',
   };
 
-  return sendAPIRequest(config);
+  return axios(config);
 };
 
 export const fetchRoleById = async roleId => {
   const config = {
-    method: 'get',
+    method: 'GET',
     url: `/roles/${roleId}`,
   };
 
-  return sendAPIRequest(config);
+  return axios(config);
 };
 
 export const addNewRole = async roleDetails => {
   const config = {
-    method: 'post',
+    method: 'POST',
     url: '/roles',
     data: roleDetails,
   };
 
-  return sendAPIRequest(config);
+  return axios(config);
 };
 
-export const editRole = async (roleId, updates) => {
+export const editRole = async ({ roleId, updates }) => {
   const config = {
-    method: 'put',
+    method: 'PUT',
     url: `/roles/${roleId}`,
     data: updates,
   };
 
-  return sendAPIRequest(config);
+  return axios(config);
 };

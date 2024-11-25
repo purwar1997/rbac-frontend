@@ -1,24 +1,24 @@
-import { sendAPIRequest } from '../../utils/axiosConfig';
+import axios from '../../utils/axiosConfig';
 import { delay } from '../../utils/helperFunctions';
 
 export const login = async username => {
   const config = {
-    method: 'get',
+    method: 'GET',
     url: `/users/exists?username=${username}`,
   };
 
-  return sendAPIRequest(config);
+  return axios(config);
 };
 
 export const logout = async () => {
   await delay(2000);
 };
 
-export const fetchLoggedInUser = async id => {
+export const fetchLoggedInUser = async userId => {
   const config = {
-    method: 'get',
-    url: `/users/${id}`,
+    method: 'GET',
+    url: `/users/${userId}`,
   };
 
-  return sendAPIRequest(config);
+  return axios(config);
 };

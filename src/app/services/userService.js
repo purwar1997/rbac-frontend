@@ -1,84 +1,84 @@
-import { sendAPIRequest } from '../../utils/axiosConfig';
+import axios from '../../utils/axiosConfig';
 
 export const fetchUsers = async () => {
   const config = {
-    method: 'get',
+    method: 'GET',
     url: '/users',
   };
 
-  return sendAPIRequest(config);
+  return axios(config);
 };
 
 export const fetchUserById = async userId => {
   const config = {
-    method: 'get',
+    method: 'GET',
     url: `/users/${userId}`,
   };
 
-  return sendAPIRequest(config);
+  return axios(config);
 };
 
 export const addNewUser = async userDetails => {
   const config = {
-    method: 'post',
+    method: 'POST',
     url: '/users',
     data: userDetails,
   };
 
-  return sendAPIRequest(config);
+  return axios(config);
 };
 
-export const editUser = async (userId, updates) => {
+export const editUser = async ({ userId, updates }) => {
   const config = {
-    method: 'put',
+    method: 'PUT',
     url: `/users/${userId}`,
     data: updates,
   };
 
-  return sendAPIRequest(config);
+  return axios(config);
 };
 
 export const deleteUser = async userId => {
   const config = {
-    method: 'delete',
+    method: 'DELETE',
     url: `/users/${userId}`,
   };
 
-  return sendAPIRequest(config);
+  return axios(config);
 };
 
 export const activateUser = async userId => {
   const config = {
-    method: 'put',
+    method: 'PUT',
     url: `/users/${userId}/activate`,
   };
 
-  return sendAPIRequest(config);
+  return axios(config);
 };
 
 export const deactivateUser = async userId => {
   const config = {
-    method: 'put',
+    method: 'PUT',
     url: `/users/${userId}/deactivate`,
   };
 
-  return sendAPIRequest(config);
+  return axios(config);
 };
 
 export const archiveUser = async userId => {
   const config = {
-    method: 'put',
+    method: 'PUT',
     url: `/users/${userId}/archive`,
   };
 
-  return sendAPIRequest(config);
+  return axios(config);
 };
 
 export const restoreUser = async userId => {
   const config = {
-    method: 'put',
+    method: 'PUT',
     url: `/users/${userId}/restore`,
   };
 
-  return sendAPIRequest(config);
+  return axios(config);
 };
