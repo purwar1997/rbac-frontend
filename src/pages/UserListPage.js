@@ -85,11 +85,7 @@ const UserListPage = () => {
       {openPermissionModal && <PermissionDisplayModal closeModal={togglePermissionModal} />}
 
       {openAccessDeniedModal && (
-        <AccessDeniedModal
-          closeModal={toggleAccessDeniedModal}
-          user={loggedInUser}
-          actionType={PERMISSIONS.ADD_USER}
-        />
+        <AccessDeniedModal closeModal={toggleAccessDeniedModal} actionType={PERMISSIONS.ADD_USER} />
       )}
     </main>
   );

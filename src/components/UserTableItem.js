@@ -120,17 +120,13 @@ const UserTableItem = memo(({ user, loggedInUser }) => {
         >
           {isArchived ? 'Restore' : 'Archive'}
         </button>
+
+        {openAccessDeniedModal && (
+          <AccessDeniedModal closeModal={toggleAccessDeniedModal} actionType={userAction} />
+        )}
+
+        {openDeleteModal && <DeleteUserModal closeModal={toggleDeleteModal} userId={id} />}
       </td>
-
-      {openAccessDeniedModal && (
-        <AccessDeniedModal
-          closeModal={toggleAccessDeniedModal}
-          user={user}
-          actionType={userAction}
-        />
-      )}
-
-      {openDeleteModal && <DeleteUserModal closeModal={toggleDeleteModal} userId={id} />}
     </tr>
   );
 });

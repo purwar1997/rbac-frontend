@@ -4,7 +4,6 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { loginAsync } from '../app/slices/authSlice';
 import { classNames } from '../utils/helperFunctions';
 import ButtonLoader from '../components/ui/ButtonLoader';
-import { AxiosError } from 'axios';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -28,9 +27,7 @@ const LoginPage = () => {
         state: { isLoggedIn: true },
       });
     } catch (error) {
-      console.log(error instanceof AxiosError);
-
-      console.log(error);
+      console.log(error.data.message);
     } finally {
       setStatus('idle');
     }

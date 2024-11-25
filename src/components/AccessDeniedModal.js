@@ -1,11 +1,14 @@
+import { useSelector } from 'react-redux';
 import { useHandleModal } from '../hooks';
 import { FaCheck } from 'react-icons/fa6';
 import { RxCross2 } from 'react-icons/rx';
 import { MdError } from 'react-icons/md';
+import { selectLoggedInUser } from '../app/slices/authSlice';
 import { handleClickOutside } from '../utils/helperFunctions';
 import { PERMISSIONS, PERMISSIONS_DESCRIPTION } from '../constants';
 
-const AccessDeniedModal = ({ closeModal, user, actionType }) => {
+const AccessDeniedModal = ({ closeModal, actionType }) => {
+  const user = useSelector(selectLoggedInUser);
   useHandleModal(closeModal);
 
   return (
@@ -30,18 +33,18 @@ const AccessDeniedModal = ({ closeModal, user, actionType }) => {
               </span>
 
               <p className='text-base'>
-                The role you have been assigned is that of a {user.role.title.toLowercase()}.
+                The role you have been assigned is that of a {user.role.title.toLowerCase()}.
                 Therefore, you don't have the required permissions to{' '}
-                {PERMISSIONS_DESCRIPTION[actionType].toLowercase()}.
+                {PERMISSIONS_DESCRIPTION[actionType].toLowerCase()}.
               </p>
             </div>
 
-            <p>Your permissions as a {user.role.title.toLowercase()} are as follows:</p>
+            <p>Your permissions as a {user.role.title.toLowerCase()} are as follows:</p>
 
             <ul className='list-none'>
-              {PERMISSIONS.map(actionType => (
+              {Object.values(PERMISSIONS).map(actionType => (
                 <li className='flex items-center gap-1' key={actionType}>
-                  {user.role.permissions.include(actionType) ? (
+                  {user.role.permissions.includes(actionType) ? (
                     <FaCheck className='text-green-600' />
                   ) : (
                     <RxCross2 className='text-red-600' />

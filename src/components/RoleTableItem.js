@@ -32,15 +32,14 @@ const RoleTableItem = memo(({ role, loggedInUser }) => {
         >
           Edit
         </button>
-      </td>
 
-      {openAccessDeniedModal && (
-        <AccessDeniedModal
-          closeModal={toggleAccessDeniedModal}
-          user={loggedInUser}
-          actionType={PERMISSIONS.EDIT_ROLE}
-        />
-      )}
+        {openAccessDeniedModal && (
+          <AccessDeniedModal
+            closeModal={toggleAccessDeniedModal}
+            actionType={PERMISSIONS.EDIT_ROLE}
+          />
+        )}
+      </td>
     </tr>
   );
 });

@@ -84,11 +84,7 @@ const RoleListPage = () => {
       {openPermissionModal && <PermissionDisplayModal closeModal={togglePermissionModal} />}
 
       {openAccessDeniedModal && (
-        <AccessDeniedModal
-          closeModal={toggleAccessDeniedModal}
-          user={loggedInUser}
-          actionType={PERMISSIONS.ADD_ROLE}
-        />
+        <AccessDeniedModal closeModal={toggleAccessDeniedModal} actionType={PERMISSIONS.ADD_ROLE} />
       )}
     </main>
   );

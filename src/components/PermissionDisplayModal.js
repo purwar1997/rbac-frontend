@@ -29,16 +29,16 @@ const PermissionDisplayModal = ({ closeModal }) => {
             <div className='flex items-start gap-2.5 *:text-red-500'>
               <p>
                 Welcome {user.name.split(' ')[0]}, you are successfully logged in as a{' '}
-                {user.role.title.toLowercase()}.
+                {user.role.title.toLowerCase()}.
               </p>
             </div>
 
-            <p>Your permissions as a {user.role.title.toLowercase()} are as follows:</p>
+            <p>Your permissions as a {user.role.title.toLowerCase()} are as follows:</p>
 
             <ul className='list-none'>
-              {PERMISSIONS.map(actionType => (
+              {Object.values(PERMISSIONS).map(actionType => (
                 <li className='flex items-center gap-1' key={actionType}>
-                  {user.role.permissions.include(actionType) ? (
+                  {user.role.permissions.includes(actionType) ? (
                     <FaCheck className='text-green-600' />
                   ) : (
                     <RxCross2 className='text-red-600' />
