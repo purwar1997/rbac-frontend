@@ -1,16 +1,14 @@
-import { useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const useShowPermissions = openModal => {
   const location = useLocation();
-  console.log(location);
-  const showPermissionsRef = useRef(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (location.state?.isLoggedIn && !showPermissionsRef.current) {
-      showPermissionsRef.current = true;
-      location.state = null;
+    if (location.state?.isLoggedIn) {
+      navigate('.', { state: null });
       openModal();
     }
-  }, [openModal]);
+  }, [openModal, navigate, location]);
 };
