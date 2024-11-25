@@ -53,7 +53,9 @@ const EditRolePage = () => {
 
     try {
       setEditStatus('pending');
-      await dispatch(editRoleAsync({ title: roleTitle, permissions: rolePermissions })).unwrap();
+      await dispatch(
+        editRoleAsync({ roleId: id, updates: { title: roleTitle, permissions: rolePermissions } })
+      ).unwrap();
       navigate('/roles');
     } catch (error) {
       console.log(error);

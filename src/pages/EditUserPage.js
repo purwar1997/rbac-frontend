@@ -50,7 +50,7 @@ const EditUserPage = () => {
 
     try {
       setEditStatus('pending');
-      await dispatch(editUserAsync({ id, updates: userDetails })).unwrap();
+      await dispatch(editUserAsync({ userId: id, updates: userDetails })).unwrap();
       navigate('/');
     } catch (error) {
       console.log(error);
@@ -92,20 +92,21 @@ const EditUserPage = () => {
           <p>Choose the new role to be assigned:</p>
 
           <div>
-            {roles.map(role => (
-              <div className='flex gap-1' key={role.id}>
-                <input
-                  type='radio'
-                  name='role'
-                  id={role.title}
-                  value={role.id}
-                  onChange={handleChange}
-                  defaultChecked={role.id === user.role.id}
-                  required
-                />
-                <label htmlFor={role.title}>{role.title}</label>
-              </div>
-            ))}
+            {roles.length > 0 &&
+              roles.map(role => (
+                <div className='flex gap-1' key={role.id}>
+                  <input
+                    type='radio'
+                    name='role'
+                    id={role.title}
+                    value={role.id}
+                    onChange={handleChange}
+                    defaultChecked={role.id === user.role.id}
+                    required
+                  />
+                  <label htmlFor={role.title}>{role.title}</label>
+                </div>
+              ))}
           </div>
         </div>
 
