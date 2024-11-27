@@ -29,7 +29,7 @@ const UserListPage = () => {
         .filter(user => user.id !== loggedInUser.id)
         .filter(user => !user.isArchived)
         .toReversed(),
-    [users]
+    [users, loggedInUser.id]
   );
 
   const togglePermissionModal = () => setOpenPermissionModal(!openPermissionModal);
