@@ -79,7 +79,7 @@ const UserTableItem = memo(({ user, loggedInUser }) => {
   };
 
   return (
-    <tr className='*:px-5 *:py-4 hover:bg-slate-300'>
+    <tr className='*:px-5 *:py-4 hover:bg-slate-100'>
       <td>{id}</td>
       <td>{name}</td>
       <td>{role.title}</td>

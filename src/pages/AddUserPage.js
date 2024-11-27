@@ -49,12 +49,12 @@ const AddUserPage = () => {
 
       <form className='max-w-2xl w-full space-y-5' onSubmit={handleSubmit}>
         <div className='flex-1 flex flex-col gap-2'>
-          <label className='font-medium text-gray-600' htmlFor='name'>
+          <label className='font-medium text-gray-500' htmlFor='name'>
             Username
           </label>
 
           <input
-            className='w-full px-3 py-2 ring-1 ring-gray-400 shadow rounded-md focus:ring-2 focus:ring-indigo-500'
+            className='w-full px-3 py-2 ring-1 ring-gray-300 shadow rounded-md focus:ring-2 focus:ring-indigo-500'
             type='text'
             name='name'
             id='name'
@@ -65,7 +65,7 @@ const AddUserPage = () => {
         </div>
 
         <div>
-          <p className='font-medium text-gray-600'>Choose the role to be assigned:</p>
+          <p className='font-medium text-gray-500'>Choose the role to be assigned:</p>
 
           <div className='mt-2 space-y-1'>
             {roles.map(role => (

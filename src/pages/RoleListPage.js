@@ -64,7 +64,7 @@ const RoleListPage = () => {
 
       <section className='mt-10 flex-1'>
         <table className='w-full text-left bg-white'>
-          <thead className='border-b border-gray-300'>
+          <thead className='border-b border-gray-200'>
             <tr className='*:font-medium *:text-gray-700 *:px-5 *:py-4'>
               <th>ID</th>
               <th>Title</th>
@@ -73,7 +73,7 @@ const RoleListPage = () => {
             </tr>
           </thead>
 
-          <tbody className='divide-y divide-gray-300 text-sm'>
+          <tbody className='divide-y divide-gray-200 text-sm'>
             {roles.toReversed().map(role => (
               <RoleTableItem key={role.id} role={role} loggedInUser={loggedInUser} />
             ))}
