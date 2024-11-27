@@ -23,6 +23,8 @@ const EditUserPage = () => {
   const roles = useSelector(selectRoles);
   const dispatch = useDispatch();
 
+  console.log(roles);
+
   const togglePermissionModal = () => setOpenPermissionModal(!openPermissionModal);
 
   useEffect(() => {
@@ -64,21 +66,21 @@ const EditUserPage = () => {
   }
 
   if (error) {
-    throw error;
+    console.log(error.data.message);
   }
 
   return (
-    <main className='page-height px-12 py-10 flex flex-col items-center gap-10'>
+    <main className='page-height px-20 py-10 flex flex-col items-center gap-10'>
       <h1 className='text-3xl'>Edit user</h1>
 
       <form className='max-w-2xl w-full space-y-5' onSubmit={handleSubmit}>
         <div className='flex-1 flex flex-col gap-2'>
-          <label className='font-medium text-gray-500' htmlFor='name'>
+          <label className='font-medium text-gray-600' htmlFor='name'>
             Username
           </label>
 
           <input
-            className='w-full px-3 py-2 rounded-md'
+            className='w-full px-3 py-2 ring-1 ring-gray-400 shadow rounded-md focus:ring-2 focus:ring-indigo-500'
             type='text'
             name='name'
             id='name'
@@ -89,12 +91,12 @@ const EditUserPage = () => {
         </div>
 
         <div>
-          <p>Choose the new role to be assigned:</p>
+          <p className='font-medium text-gray-600'>Choose the new role to be assigned:</p>
 
-          <div>
+          <div className='mt-2 space-y-1'>
             {roles.length > 0 &&
               roles.map(role => (
-                <div className='flex gap-1' key={role.id}>
+                <div className='flex gap-2.5' key={role.id}>
                   <input
                     type='radio'
                     name='role'
@@ -112,7 +114,7 @@ const EditUserPage = () => {
 
         <button
           className={classNames(
-            'w-full h-12 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 flex justify-center items-center',
+            'w-full h-11 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 flex justify-center items-center',
             editStatus === 'pending' ? 'cursor-wait' : ''
           )}
           type='submit'
@@ -122,7 +124,7 @@ const EditUserPage = () => {
         </button>
       </form>
 
-      {openPermissionModal && <PermissionDisplayModal closeModal={openPermissionModal} />}
+      {openPermissionModal && <PermissionDisplayModal closeModal={togglePermissionModal} />}
     </main>
   );
 };

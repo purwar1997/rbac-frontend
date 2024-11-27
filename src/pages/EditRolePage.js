@@ -69,21 +69,21 @@ const EditRolePage = () => {
   }
 
   if (error) {
-    throw error;
+    console.log(error.data.message);
   }
 
   return (
-    <main className='page-height px-12 py-10 flex flex-col items-center gap-10'>
+    <main className='page-height px-20 py-10 flex flex-col items-center gap-10'>
       <h1 className='text-3xl'>Edit role</h1>
 
       <form className='max-w-2xl w-full space-y-5' onSubmit={handleSubmit}>
         <div className='flex-1 flex flex-col gap-2'>
-          <label className='font-medium text-gray-500' htmlFor='title'>
+          <label className='font-medium text-gray-600' htmlFor='title'>
             Title
           </label>
 
           <input
-            className='w-full px-3 py-2 rounded-md'
+            className='w-full px-3 py-2 ring-1 ring-gray-400 shadow rounded-md focus:ring-2 focus:ring-indigo-500'
             type='text'
             name='title'
             id='title'
@@ -94,19 +94,18 @@ const EditRolePage = () => {
         </div>
 
         <div>
-          <p>Select permissions for the role:</p>
+          <p className='font-medium text-gray-600'>Select permissions for the role:</p>
 
-          <div>
+          <div className='mt-2 space-y-1'>
             {Object.values(PERMISSIONS).map(permission => (
-              <div className='flex gap-1' key={permission}>
+              <div className='flex gap-2.5' key={permission}>
                 <input
                   type='checkbox'
                   name='permissions'
                   id={permission}
                   value={permission}
                   onChange={updatePermissions}
-                  defaultChecked={rolePermissions.includes(permission)}
-                  required
+                  checked={rolePermissions.includes(permission)}
                 />
                 <label htmlFor={permission}>{PERMISSIONS_DESCRIPTION[permission]}</label>
               </div>
@@ -116,13 +115,13 @@ const EditRolePage = () => {
 
         <button
           className={classNames(
-            'w-full h-12 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 flex justify-center items-center',
+            'w-full h-11 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 flex justify-center items-center',
             editStatus === 'pending' ? 'cursor-wait' : ''
           )}
           type='submit'
           disabled={editStatus === 'pending'}
         >
-          {editStatus === 'pending' ? <ButtonLoader /> : 'Add Role'}
+          {editStatus === 'pending' ? <ButtonLoader /> : 'Edit Role'}
         </button>
       </form>
 

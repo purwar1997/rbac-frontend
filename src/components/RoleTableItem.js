@@ -21,7 +21,7 @@ const RoleTableItem = memo(({ role, loggedInUser }) => {
   };
 
   return (
-    <tr className='*:px-5 *:py-4 hover:bg-slate-100'>
+    <tr className='*:px-5 *:py-4 hover:bg-slate-300'>
       <td>{id}</td>
       <td>{title}</td>
       <td>{userCount}</td>

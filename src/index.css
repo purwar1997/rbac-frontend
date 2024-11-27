@@ -22,10 +22,6 @@
 }
 
 @layer utilities {
-  .active {
-    @apply bg-gray-800 text-white;
-  }
-
   .outlet-height {
     min-height: calc(100vh - theme(spacing.20));
   }

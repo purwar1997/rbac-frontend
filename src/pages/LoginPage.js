@@ -34,7 +34,7 @@ const LoginPage = () => {
   };
 
   return (
-    <main className='max-w-screen min-h-screen p-12 flex flex-col justify-center items-center gap-10'>
+    <main className='max-w-screen min-h-screen p-20 flex flex-col justify-center items-center gap-10'>
       <header>
         <h1 className='text-3xl text-indigo-500 text-center font-bold'>
           Role-Based Access Control

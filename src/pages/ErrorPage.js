@@ -4,7 +4,7 @@ const ErrorPage = () => {
   const error = useRouteError();
 
   return (
-    <main className='h-screen w-screen px-12 flex justify-center items-center'>
+    <main className='h-screen w-screen px-20 flex justify-center items-center'>
       <div className='max-w-3xl flex flex-col items-center'>
         <h1 className='text-3xl text-gray-900'>Oops, an unexpected error had occured.</h1>
         {error.message && <p className='mt-7 font-medium text-lg text-gray-500'>{error.message}</p>}

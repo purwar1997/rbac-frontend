@@ -29,7 +29,7 @@ const Header = () => {
   };
 
   return (
-    <header className='bg-gray-700 h-20 px-12 flex justify-between items-center gap-12 sticky top-0 z-10'>
+    <header className='bg-gray-700 h-20 px-20 flex justify-between items-center gap-12 sticky top-0 z-10'>
       <Link to='.'>
         <h1 className='text-3xl text-white'>RBAC UI</h1>
       </Link>

@@ -44,17 +44,17 @@ const AddUserPage = () => {
   };
 
   return (
-    <main className='page-height px-12 py-10 flex flex-col items-center gap-10'>
+    <main className='page-height px-20 py-10 flex flex-col items-center gap-10'>
       <h1 className='text-3xl'>Add new user</h1>
 
       <form className='max-w-2xl w-full space-y-5' onSubmit={handleSubmit}>
         <div className='flex-1 flex flex-col gap-2'>
-          <label className='font-medium text-gray-500' htmlFor='name'>
+          <label className='font-medium text-gray-600' htmlFor='name'>
             Username
           </label>
 
           <input
-            className='w-full px-3 py-2 rounded-md'
+            className='w-full px-3 py-2 ring-1 ring-gray-400 shadow rounded-md focus:ring-2 focus:ring-indigo-500'
             type='text'
             name='name'
             id='name'
@@ -65,11 +65,11 @@ const AddUserPage = () => {
         </div>
 
         <div>
-          <p>Choose the role to be assigned:</p>
+          <p className='font-medium text-gray-600'>Choose the role to be assigned:</p>
 
-          <div>
+          <div className='mt-2 space-y-1'>
             {roles.map(role => (
-              <div className='flex gap-1' key={role.id}>
+              <div className='flex gap-2.5' key={role.id}>
                 <input
                   type='radio'
                   name='role'
@@ -86,7 +86,7 @@ const AddUserPage = () => {
 
         <button
           className={classNames(
-            'w-full h-12 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 flex justify-center items-center',
+            'w-full h-11 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 flex justify-center items-center',
             addStatus === 'pending' ? 'cursor-wait' : ''
           )}
           type='submit'

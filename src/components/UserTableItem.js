@@ -79,12 +79,12 @@ const UserTableItem = memo(({ user, loggedInUser }) => {
   };
 
   return (
-    <tr className='*:px-5 *:py-4 hover:bg-slate-100'>
+    <tr className='*:px-5 *:py-4 hover:bg-slate-300'>
       <td>{id}</td>
       <td>{name}</td>
       <td>{role.title}</td>
       <td>{isActive ? 'Active' : 'Inactive'}</td>
-      <td className='flex gap-5'>
+      <td className='flex gap-6'>
         <button
           className='text-indigo-500 font-medium focus-visible:outline-0'
           onClick={() => handleActions(EDIT_USER)}
@@ -102,23 +102,23 @@ const UserTableItem = memo(({ user, loggedInUser }) => {
         <button
           className={classNames(
             'text-indigo-500 font-medium focus-visible:outline-0',
-            activationStatus === 'pending' ? 'cursor-wait' : ''
-          )}
-          onClick={() => handleActions(isActive ? DEACTIVATE_USER : ACTIVATE_USER)}
-          disabled={activationStatus === 'pending'}
-        >
-          {isActive ? 'Deactivate' : 'Activate'}
-        </button>
-
-        <button
-          className={classNames(
-            'text-indigo-500 font-medium focus-visible:outline-0',
             archivalStatus === 'pending' ? 'cursor-wait' : ''
           )}
           onClick={() => handleActions(isArchived ? RESTORE_USER : ARCHIVE_USER)}
           disabled={archivalStatus === 'pending'}
         >
           {isArchived ? 'Restore' : 'Archive'}
+        </button>
+
+        <button
+          className={classNames(
+            'text-indigo-500 font-medium focus-visible:outline-0',
+            activationStatus === 'pending' ? 'cursor-wait' : ''
+          )}
+          onClick={() => handleActions(isActive ? DEACTIVATE_USER : ACTIVATE_USER)}
+          disabled={activationStatus === 'pending'}
+        >
+          {isActive ? 'Deactivate' : 'Activate'}
         </button>
 
         {openAccessDeniedModal && (
