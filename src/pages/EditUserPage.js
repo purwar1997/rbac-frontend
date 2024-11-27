@@ -23,8 +23,6 @@ const EditUserPage = () => {
   const roles = useSelector(selectRoles);
   const dispatch = useDispatch();
 
-  console.log(roles);
-
   const togglePermissionModal = () => setOpenPermissionModal(!openPermissionModal);
 
   useEffect(() => {

@@ -21,12 +21,8 @@ export const handleAsyncThunks =
   async (data, { rejectWithValue }) => {
     try {
       const response = await apiService(data);
-      console.log(response);
-
       return response?.data?.data;
     } catch (error) {
-      console.log(error);
-
       if (axios.isAxiosError(error) && error.response) {
         const errorData = {
           status: error.response.status,
