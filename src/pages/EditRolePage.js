@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useShowPermissions } from '../hooks';
 import { editRoleAsync, fetchRoleByIdAsync } from '../app/slices/roleSlice';
+import { selectLoggedInUser, updateLoggedInUserRoles } from '../app/slices/authSlice';
 import { classNames } from '../utils/helperFunctions';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import ButtonLoader from '../components/ui/ButtonLoader';
@@ -21,6 +22,7 @@ const EditRolePage = () => {
   const status = useSelector(state => state.role.selectedRoleStatus);
   const role = useSelector(state => state.role.selectedRole);
   const error = useSelector(state => state.role.selectedRoleError);
+  const loggedInUser = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
 
   const togglePermissionModal = () => setOpenPermissionModal(!openPermissionModal);
@@ -53,9 +55,15 @@ const EditRolePage = () => {
 
     try {
       setEditStatus('pending');
-      await dispatch(
+
+      const editedRole = await dispatch(
         editRoleAsync({ roleId: id, updates: { title: roleTitle, permissions: rolePermissions } })
       ).unwrap();
+
+      if (loggedInUser.role.id === editedRole.id) {
+        dispatch(updateLoggedInUserRoles(editedRole));
+      }
+
       navigate('/roles');
     } catch (error) {
       console.log(error);

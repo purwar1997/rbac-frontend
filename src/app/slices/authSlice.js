@@ -18,7 +18,11 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    updateLoggedInUserRoles(state, action) {
+      state.loggedInUser.role = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(loginAsync.fulfilled, (state, action) => {
@@ -32,6 +36,8 @@ const authSlice = createSlice({
       });
   },
 });
+
+export const { updateLoggedInUserRoles } = authSlice.actions;
 
 export const selectLoggedInUser = state => state.auth.loggedInUser;
 
