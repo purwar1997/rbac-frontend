@@ -12,10 +12,6 @@
     @apply text-gray-600 font-medium;
   }
 
-  p {
-    @apply text-gray-700;
-  }
-
   input {
     @apply outline-none;
   }

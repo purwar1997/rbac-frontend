@@ -15,7 +15,7 @@ const PermissionDisplayModal = ({ closeModal }) => {
       className='w-screen h-screen fixed top-0 left-0 bg-black/40 flex justify-center items-center z-30'
       onClick={e => handleClickOutside(e, closeModal)}
     >
-      <section className='w-96 bg-white rounded-lg'>
+      <section className='w-[400px] bg-white rounded-lg'>
         <header className='bg-gray-100 px-6 py-4 rounded-t-lg border-b border-gray-300 flex justify-between items-center'>
           <h2 className='text-lg'>Your Permissions</h2>
 
@@ -25,19 +25,19 @@ const PermissionDisplayModal = ({ closeModal }) => {
         </header>
 
         <div className='px-6 py-4'>
-          <div className='space-y-2'>
-            <div className='flex items-start gap-2.5 *:text-red-500'>
-              <p>
-                Welcome {user.name.split(' ')[0]}, you are successfully logged in as a{' '}
-                {user.role.title.toLowerCase()}.
-              </p>
-            </div>
+          <div className='space-y-3'>
+            <p className='text-green-700'>
+              Welcome {user.name.split(' ')[0]}, you are successfully logged in as a{' '}
+              {user.role.title.toLowerCase()}.
+            </p>
 
-            <p>Your permissions as a {user.role.title.toLowerCase()} are as follows:</p>
+            <p className='text-sm'>
+              Your permissions as a {user.role.title.toLowerCase()} are as follows:
+            </p>
 
-            <ul className='list-none'>
+            <ul className='list-none space-y-1'>
               {Object.values(PERMISSIONS).map(actionType => (
-                <li className='flex items-center gap-1' key={actionType}>
+                <li className='flex items-center gap-2.5 text-sm' key={actionType}>
                   {user.role.permissions.includes(actionType) ? (
                     <FaCheck className='text-green-600' />
                   ) : (

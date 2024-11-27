@@ -39,8 +39,8 @@ const DeleteUserModal = ({ closeModal, userId }) => {
         </header>
 
         <div className='px-6 py-4'>
-          <div className='flex items-start gap-2.5 *:text-red-500'>
-            <span className='relative text-xl top-px'>
+          <div className='flex items-start gap-2.5 *:text-red-600'>
+            <span className='relative text-xl top-[2px]'>
               <MdError />
             </span>
 
@@ -50,9 +50,9 @@ const DeleteUserModal = ({ closeModal, userId }) => {
             </p>
           </div>
 
-          <div className='mt-5 pt-5 border-t border-gray-200 flex justify-center gap-5'>
+          <div className='mt-5 pt-5 border-t border-gray-300 flex justify-center gap-5'>
             <button
-              className='w-20 py-1 border border-gray-300 bg-white rounded-md text-sm hover:bg-gray-100'
+              className='w-20 py-1 border border-gray-300 bg-white rounded-md text-sm hover:bg-gray-200'
               onClick={closeModal}
             >
               No

@@ -27,7 +27,7 @@ const RoleTableItem = memo(({ role, loggedInUser }) => {
       <td>{userCount}</td>
       <td className='flex gap-5'>
         <button
-          className='text-indigo-500 font-medium focus-visible:outline-0'
+          className='text-indigo-500 font-medium focus-visible:outline-0 hover:text-indigo-600'
           onClick={handleClick}
         >
           Edit

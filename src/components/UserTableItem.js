@@ -86,14 +86,14 @@ const UserTableItem = memo(({ user, loggedInUser }) => {
       <td>{isActive ? 'Active' : 'Inactive'}</td>
       <td className='flex gap-6'>
         <button
-          className='text-indigo-500 font-medium focus-visible:outline-0'
+          className='text-indigo-500 font-medium focus-visible:outline-0 hover:text-indigo-600'
           onClick={() => handleActions(EDIT_USER)}
         >
           Edit
         </button>
 
         <button
-          className='text-indigo-500 font-medium focus-visible:outline-0'
+          className='text-indigo-500 font-medium focus-visible:outline-0 hover:text-indigo-600'
           onClick={() => handleActions(DELETE_USER)}
         >
           Delete
@@ -101,7 +101,7 @@ const UserTableItem = memo(({ user, loggedInUser }) => {
 
         <button
           className={classNames(
-            'text-indigo-500 font-medium focus-visible:outline-0',
+            'text-indigo-500 font-medium focus-visible:outline-0 hover:text-indigo-600',
             archivalStatus === 'pending' ? 'cursor-wait' : ''
           )}
           onClick={() => handleActions(isArchived ? RESTORE_USER : ARCHIVE_USER)}
@@ -112,7 +112,7 @@ const UserTableItem = memo(({ user, loggedInUser }) => {
 
         <button
           className={classNames(
-            'text-indigo-500 font-medium focus-visible:outline-0',
+            'text-indigo-500 font-medium focus-visible:outline-0 hover:text-indigo-600',
             activationStatus === 'pending' ? 'cursor-wait' : ''
           )}
           onClick={() => handleActions(isActive ? DEACTIVATE_USER : ACTIVATE_USER)}
