@@ -1,33 +1,13 @@
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { selectLoggedInUser, logoutAsync } from '../../app/slices/authSlice';
+import { Link, NavLink } from 'react-router-dom';
 import { classNames } from '../../utils/helperFunctions';
 
 const navigationLinks = [
   { name: 'Users', href: '/' },
   { name: 'Roles', href: '/roles' },
+  { name: 'Logout', href: '/logout' },
 ];
 
 const Header = () => {
-  const [status, setStatus] = useState('idle');
-  const user = useSelector(selectLoggedInUser);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    try {
-      setStatus('pending');
-      await dispatch(logoutAsync()).unwrap();
-      localStorage.removeItem('loggedInUserId');
-      navigate('/login');
-    } catch (error) {
-      console.log(error.data.message);
-    } finally {
-      setStatus('idle');
-    }
-  };
-
   return (
     <header className='bg-gray-700 h-20 px-20 flex justify-between items-center gap-12 sticky top-0 z-10'>
       <Link to='.'>
@@ -50,19 +30,6 @@ const Header = () => {
             {link.name}
           </NavLink>
         ))}
-
-        {user && (
-          <button
-            className={classNames(
-              'px-3 py-1.5 text-white rounded-md hover:bg-gray-800',
-              status === 'pending' ? 'cursor-wait' : ''
-            )}
-            onClick={handleLogout}
-            disabled={status === 'pending'}
-          >
-            Logout
-          </button>
-        )}
       </nav>
     </header>
   );

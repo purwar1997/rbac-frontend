@@ -11,6 +11,7 @@ import LoadingSpinner from './components/ui/LoadingSpinner';
 import Protected from './components/Protected';
 
 import LoginPage from './pages/LoginPage';
+import LogoutPage from './pages/LogoutPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ErrorPage from './pages/ErrorPage';
 
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path='/login' element={<LoginPage />} />
+      <Route path='/logout' element={<LogoutPage />} />
 
       <Route path='/' element={<AppLayout />} errorElement={<ErrorPage />}>
         <Route
